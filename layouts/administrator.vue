@@ -41,19 +41,19 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import AdministratorStore, { name } from '@/utils/administratorStore'
 
 @Component
-export default class DefaultLayout extends Vue {
+export default class AdministratorLayout extends Vue {
+  created () {
+    this.$store.registerModule(name, AdministratorStore)
+  }
+
   private items = [
     {
       title: 'Home',
       icon: 'home',
-      to: { name: 'index' }
-    },
-    {
-      title: 'Inspire',
-      icon: 'lightbulb',
-      to: { name: 'inspire' }
+      to: { name: 'administrator' }
     }
   ]
 }

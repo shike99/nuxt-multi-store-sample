@@ -29,7 +29,7 @@ const nuxtConfig: Configuration = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/injectContext'],
+  plugins: ['~/plugins/injectApi'],
   /*
    ** Nuxt.js dev-modules
    */

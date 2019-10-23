@@ -1,24 +1,32 @@
-import { VuexModule, Module, Mutation } from 'vuex-module-decorators'
+import { VuexModule, Module, Mutation, Action } from 'vuex-module-decorators'
+import { $api } from '~/utils/api'
+
+export const name = 'administrator'
 
 @Module({
-  name: 'administrator',
+  name,
   stateFactory: true,
   namespaced: true
 })
-export default class Administrator extends VuexModule {
-  counter = 0
+export default class AdministratorStore extends VuexModule {
+  counter: number = 0
 
   get count(): number {
     return this.counter
   }
 
   @Mutation
-  increase(count: number) {
-    this.counter += count
+  increment() {
+    this.counter += 1
   }
 
   @Mutation
-  descrease(count: number) {
-    this.counter -= count
+  decrement() {
+    this.counter -= 1
+  }
+
+  @Action
+  persistCounter() {
+    $api.persistCounter(this.counter)
   }
 }

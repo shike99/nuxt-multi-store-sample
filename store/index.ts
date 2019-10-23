@@ -1,18 +1,15 @@
-import { Store, ActionTree } from 'vuex'
-import { getModule } from 'vuex-module-decorators'
-import AdministratorStore from '~/utils/administratorStore'
+import { ActionTree, Store } from 'vuex'
+import { Context } from '@nuxt/types'
+import { initializeStores } from '~/utils/storeAccessor'
 
-interface RootState {}
+const initializer = (store: Store<any>) => initializeStores(store)
+export const plugins = [initializer]
+export * from '~/utils/storeAccessor'
 
 export const state = () => ({})
-
+export type RootState = ReturnType<typeof state>
+export const getters = {}
+export const mutations = {}
 export const actions: ActionTree<RootState, RootState> = {
-  nuxtServerInit(context: any, server: any) {
-    server.store.registerModule(
-      'administrator',
-      getModule(AdministratorStore, context)
-    )
-    if (this.$injectContext().startsWith('/administrator')) {
-    }
-  }
+  nuxtServerInit(context, server: Context) {}
 }
