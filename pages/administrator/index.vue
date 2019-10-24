@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import { administratorStore } from '~/store'
+import { administratorStore } from '~/utils/storeAccessor'
 
 @Component({
   components: {

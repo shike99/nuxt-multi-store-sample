@@ -4,7 +4,6 @@ import { initializeStores } from '~/utils/storeAccessor'
 
 const initializer = (store: Store<any>) => initializeStores(store)
 export const plugins = [initializer]
-export * from '~/utils/storeAccessor'
 
 export const state = () => ({})
 export type RootState = ReturnType<typeof state>
